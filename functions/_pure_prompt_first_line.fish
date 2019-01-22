@@ -6,6 +6,8 @@ function _pure_prompt_first_line
         return 1
     end
 
+    set --local where_i_am (_pure_prompt_where_i_am)
+
     set --local git_repo (_pure_prompt_git)
 
     set --local command_duration (_pure_prompt_command_duration)
@@ -16,8 +18,8 @@ function _pure_prompt_first_line
     set --local current_folder (_pure_prompt_current_folder $current_prompt_width)
 
     if test $pure_user_host_location -eq 0
-        echo (_pure_print_prompt $current_folder $git_repo $user_and_host $command_duration)
+        echo (_pure_print_prompt $current_folder $where_i_am $git_repo $user_and_host $command_duration)
     else
-        echo (_pure_print_prompt $user_and_host $current_folder $git_repo $command_duration)
+        echo (_pure_print_prompt $user_and_host $current_folder $where_i_am $git_repo $command_duration)
     end
 end
